@@ -1,3 +1,4 @@
+import 'package:academia/configs/configs.dart';
 import 'package:academia/database/database.dart';
 import 'package:academia/features/features.dart';
 import 'package:academia/utils/router/router.dart';
@@ -8,16 +9,15 @@ import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Academia extends StatelessWidget {
-  final String flavor;
   const Academia({
     super.key,
-    required this.flavor,
   });
 
   @override
   Widget build(BuildContext context) {
+    final GetIt getIt = GetIt.instance;
     // Inject the application database
-    GetIt.instance.registerSingletonIfAbsent<AppDatabase>(
+    getIt.registerSingletonIfAbsent<AppDatabase>(
       () => AppDatabase(),
       instanceName: "cacheDB",
     );
@@ -29,7 +29,7 @@ class Academia extends StatelessWidget {
       ],
       child: DynamicColorBuilder(
         builder: (lightscheme, darkscheme) => MaterialApp.router(
-          title: flavor,
+          title: getIt<FlavorConfig>().appName,
           routerConfig: AcademiaRouter.router,
           theme: ThemeData(
             colorScheme: lightscheme,
