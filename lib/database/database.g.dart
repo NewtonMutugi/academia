@@ -2776,7 +2776,7 @@ final class $$UserTableReferences
 
   $$UserProfileTableProcessedTableManager get userProfileRefs {
     final manager = $$UserProfileTableTableManager($_db, $_db.userProfile)
-        .filter((f) => f.userId.id($_item.id));
+        .filter((f) => f.userId.id.sqlEquals($_itemColumn<String>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_userProfileRefsTable($_db));
     return ProcessedTableManager(
@@ -2790,7 +2790,7 @@ final class $$UserTableReferences
 
   $$CourseTableProcessedTableManager get courseRefs {
     final manager = $$CourseTableTableManager($_db, $_db.course)
-        .filter((f) => f.user.id($_item.id));
+        .filter((f) => f.user.id.sqlEquals($_itemColumn<String>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_courseRefsTable($_db));
     return ProcessedTableManager(
@@ -2804,7 +2804,7 @@ final class $$UserTableReferences
 
   $$TodoTableProcessedTableManager get todoRefs {
     final manager = $$TodoTableTableManager($_db, $_db.todo)
-        .filter((f) => f.userId.id($_item.id));
+        .filter((f) => f.userId.id.sqlEquals($_itemColumn<String>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_todoRefsTable($_db));
     return ProcessedTableManager(
@@ -3250,10 +3250,11 @@ final class $$UserProfileTableReferences
   static $UserTable _userIdTable(_$AppDatabase db) => db.user
       .createAlias($_aliasNameGenerator(db.userProfile.userId, db.user.id));
 
-  $$UserTableProcessedTableManager? get userId {
-    if ($_item.userId == null) return null;
+  $$UserTableProcessedTableManager get userId {
+    final $_column = $_itemColumn<String>('user_id')!;
+
     final manager = $$UserTableTableManager($_db, $_db.user)
-        .filter((f) => f.id($_item.userId!));
+        .filter((f) => f.id.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_userIdTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
@@ -3598,9 +3599,10 @@ final class $$UserCredentialTableReferences extends BaseReferences<
       .createAlias($_aliasNameGenerator(db.userCredential.userId, db.user.id));
 
   $$UserTableProcessedTableManager? get userId {
-    if ($_item.userId == null) return null;
+    final $_column = $_itemColumn<String>('user_id');
+    if ($_column == null) return null;
     final manager = $$UserTableTableManager($_db, $_db.user)
-        .filter((f) => f.id($_item.userId!));
+        .filter((f) => f.id.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_userIdTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
@@ -3610,10 +3612,11 @@ final class $$UserCredentialTableReferences extends BaseReferences<
   static $UserTable _usernameTable(_$AppDatabase db) => db.user.createAlias(
       $_aliasNameGenerator(db.userCredential.username, db.user.username));
 
-  $$UserTableProcessedTableManager? get username {
-    if ($_item.username == null) return null;
+  $$UserTableProcessedTableManager get username {
+    final $_column = $_itemColumn<String>('username')!;
+
     final manager = $$UserTableTableManager($_db, $_db.user)
-        .filter((f) => f.username($_item.username!));
+        .filter((f) => f.username.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_usernameTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
@@ -3623,10 +3626,11 @@ final class $$UserCredentialTableReferences extends BaseReferences<
   static $UserTable _emailTable(_$AppDatabase db) => db.user.createAlias(
       $_aliasNameGenerator(db.userCredential.email, db.user.email));
 
-  $$UserTableProcessedTableManager? get email {
-    if ($_item.email == null) return null;
+  $$UserTableProcessedTableManager get email {
+    final $_column = $_itemColumn<String>('email')!;
+
     final manager = $$UserTableTableManager($_db, $_db.user)
-        .filter((f) => f.email($_item.email!));
+        .filter((f) => f.email.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_emailTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
@@ -4056,9 +4060,10 @@ final class $$CourseTableReferences
       db.user.createAlias($_aliasNameGenerator(db.course.user, db.user.id));
 
   $$UserTableProcessedTableManager? get user {
-    if ($_item.user == null) return null;
+    final $_column = $_itemColumn<String>('user');
+    if ($_column == null) return null;
     final manager = $$UserTableTableManager($_db, $_db.user)
-        .filter((f) => f.id($_item.user!));
+        .filter((f) => f.id.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_userTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
@@ -4072,7 +4077,7 @@ final class $$CourseTableReferences
 
   $$TodoTableProcessedTableManager get todoRefs {
     final manager = $$TodoTableTableManager($_db, $_db.todo)
-        .filter((f) => f.unit.unit($_item.unit));
+        .filter((f) => f.unit.unit.sqlEquals($_itemColumn<String>('unit')!));
 
     final cache = $_typedResult.readTableOrNull(_todoRefsTable($_db));
     return ProcessedTableManager(
@@ -4473,10 +4478,11 @@ final class $$TodoTableReferences
   static $UserTable _userIdTable(_$AppDatabase db) =>
       db.user.createAlias($_aliasNameGenerator(db.todo.userId, db.user.id));
 
-  $$UserTableProcessedTableManager? get userId {
-    if ($_item.userId == null) return null;
+  $$UserTableProcessedTableManager get userId {
+    final $_column = $_itemColumn<String>('user_id')!;
+
     final manager = $$UserTableTableManager($_db, $_db.user)
-        .filter((f) => f.id($_item.userId!));
+        .filter((f) => f.id.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_userIdTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
@@ -4487,9 +4493,10 @@ final class $$TodoTableReferences
       db.course.createAlias($_aliasNameGenerator(db.todo.unit, db.course.unit));
 
   $$CourseTableProcessedTableManager? get unit {
-    if ($_item.unit == null) return null;
+    final $_column = $_itemColumn<String>('unit');
+    if ($_column == null) return null;
     final manager = $$CourseTableTableManager($_db, $_db.course)
-        .filter((f) => f.unit($_item.unit!));
+        .filter((f) => f.unit.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_unitTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(

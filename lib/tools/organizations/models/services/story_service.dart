@@ -2,7 +2,7 @@ import 'package:academia/exports/barrel.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
-class StoryService with ChirpService {
+class StoryService extends ChirpService {
   Future<Either<String, List<Map<String, List<Story>>>>> fetchStories(
       Map<String, String> authHeaders) async {
     try {

@@ -12,10 +12,10 @@ final class UserLocalRepository {
   /// Fetches all users from the local cache
   /// incase of an error it will return a [String] to the left
   /// and a [List<UserData>] to the right incase users were retrived
-  Future<Either<String, List<UserData>>> fetchAllUsers() async {
+  Future<Either<String, UserData?>> fetchUser() async {
     try {
-      final users = await _localDb.user.select().get();
-      return right(users);
+      final user = await _localDb.user.select().getSingleOrNull();
+      return right(user);
     } catch (e) {
       return left("Failed to retrieve users with message ${e.toString()}");
     }

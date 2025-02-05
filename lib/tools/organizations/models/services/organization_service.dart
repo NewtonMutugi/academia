@@ -2,7 +2,7 @@ import 'package:academia/exports/barrel.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
-class OrganizationService with ChirpService {
+class OrganizationService extends ChirpService {
   Future<Either<String, List<Organization>>> fetchOrganizations(
       Map<String, String> authHeaders) async {
     try {

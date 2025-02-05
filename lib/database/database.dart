@@ -1,10 +1,8 @@
 import 'dart:io';
 
-import 'package:academia/features/auth/models/user.dart';
-import 'package:academia/features/auth/models/user_credentials.dart';
-import 'package:academia/features/auth/models/user_profile.dart';
 import 'package:academia/features/courses/models/course.dart';
 import 'package:academia/features/todo/models/todo.dart';
+import 'package:academia/core/core.dart';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:drift_flutter/drift_flutter.dart';

@@ -10,11 +10,10 @@ class DefaultRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthCubit, AuthState>(
+      body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthCachedUsersRetrieved) {
-            GoRouter.of(context)
-                .pushReplacementNamed(AcademiaRouter.userSelection);
+          if (state is AuthenticatedState) {
+            GoRouter.of(context).pushReplacementNamed(AcademiaRouter.home);
           } else if (state is AuthenticatedState) {
             GoRouter.of(context).pushReplacementNamed(AcademiaRouter.home);
           }

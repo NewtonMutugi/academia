@@ -1,10 +1,10 @@
 import 'package:academia/database/database.dart';
-import 'package:academia/features/auth/repository/user_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:academia/core/core.dart';
 import './profile_state.dart';
 
-final class ProfileCubit extends Cubit<ProfileState> {
+class ProfileCubit extends Cubit<ProfileState> {
   final UserRepository _userRepository = UserRepository();
   ProfileCubit() : super(ProfileInitalState());
 

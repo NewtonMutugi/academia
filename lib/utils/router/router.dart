@@ -13,7 +13,6 @@ class AcademiaRouter {
   static const String auth = "auth";
   static const String profile = "profile";
   static const String home = "home";
-  static const String userSelection = "user-selection";
   static const String onboarding = "onboarding";
   static const String courseView = "course-view";
   static const String todo = "todo";
@@ -47,11 +46,6 @@ class AcademiaRouter {
         name: profile,
         path: "/$profile",
         builder: (context, state) => const ProfilePage(),
-      ),
-      GoRoute(
-        name: userSelection,
-        path: "/$userSelection",
-        builder: (context, state) => const UserSelectionPage(),
       ),
       GoRoute(
         name: todo,

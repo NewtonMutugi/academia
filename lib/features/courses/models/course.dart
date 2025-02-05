@@ -1,4 +1,4 @@
-import 'package:academia/features/auth/models/user.dart';
+import 'package:academia/core/core.dart';
 import 'package:drift/drift.dart';
 
 class Course extends Table {

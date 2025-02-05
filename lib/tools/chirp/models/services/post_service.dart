@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import '../models.dart';
 
-class PostService with ChirpService {
+class PostService extends ChirpService {
   Future<Either<String, Map<String, dynamic>>> fetchPosts(
     Map<String, String> authHeaders, {
     int page = 1,

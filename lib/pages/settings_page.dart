@@ -1,5 +1,4 @@
 import 'package:academia/exports/barrel.dart';
-import 'package:academia/main.dart';
 import 'package:academia/notifier/local_notification_channel.dart';
 import 'package:academia/notifier/local_notifier_service.dart';
 import 'package:get/get.dart';

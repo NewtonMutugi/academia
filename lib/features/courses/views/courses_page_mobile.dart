@@ -16,7 +16,7 @@ class CoursesPageMobile extends StatefulWidget {
 
 class _CoursesPageMobileState extends State<CoursesPageMobile> {
   late CourseCubit courseCubit = BlocProvider.of<CourseCubit>(context);
-  late AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
+  late AuthBloc authCubit = BlocProvider.of<AuthBloc>(context);
 
   @override
   void initState() {

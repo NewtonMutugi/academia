@@ -1,9 +1,7 @@
 import 'package:academia/database/database.dart';
-import 'package:academia/features/auth/repository/user_local_repository.dart';
-import 'package:academia/features/auth/repository/user_remote_repository.dart';
 import 'package:dartz/dartz.dart';
-import 'package:get_it/get_it.dart';
-import 'package:magnet/magnet.dart';
+import 'user_local_repository.dart';
+import 'user_remote_repository.dart';
 
 final class UserRepository {
   final UserLocalRepository _userLocalRepository = UserLocalRepository();
@@ -12,8 +10,8 @@ final class UserRepository {
   /// Fetches all users from the local cache
   /// incase of an error it will return a [String] to the left
   /// and a [List<UserData>] to the right incase users were retrived
-  Future<Either<String, List<UserData>>> fetchAllUsersFromCache() async {
-    return await _userLocalRepository.fetchAllUsers();
+  Future<Either<String, UserData?>> fetchUserFromCache() async {
+    return await _userLocalRepository.fetchUser();
   }
 
   /// Adds or updates a user's information into local cache depending

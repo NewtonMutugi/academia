@@ -19,7 +19,7 @@ class ProfilePageMobile extends StatefulWidget {
 
 class _ProfilePageMobileState extends State<ProfilePageMobile> {
   late UserData user;
-  late AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
+  late AuthBloc authCubit = BlocProvider.of<AuthBloc>(context);
   late ProfileCubit profileCubit = BlocProvider.of<ProfileCubit>(context);
 
   @override
@@ -36,17 +36,17 @@ class _ProfilePageMobileState extends State<ProfilePageMobile> {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: () async {
-          final localAuth = (authCubit.state as AuthenticatedState).localAuth;
-          if (localAuth) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text(
-                  "Please check your internet connection and try again!",
-                ),
-              ),
-            );
-            return;
-          }
+          //final localAuth = (authCubit.state as AuthenticatedState).localAuth;
+          //if (localAuth) {
+          //  ScaffoldMessenger.of(context).showSnackBar(
+          //    const SnackBar(
+          //      content: Text(
+          //        "Please check your internet connection and try again!",
+          //      ),
+          //    ),
+          //  );
+          //  return;
+          //}
           final response = await profileCubit.fetchUserProfileFromRemote(user);
           response.fold((error) {
             ScaffoldMessenger.of(context).showSnackBar(
